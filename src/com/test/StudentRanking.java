@@ -17,7 +17,7 @@ public class StudentRanking {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException{
 		
-		
+		RankFactory rr = new RankFactory();
 		StudentRanking st = new StudentRanking();  
 		CSVReader csv = new CSVReader();
 		//putting a default option
@@ -44,7 +44,7 @@ public class StudentRanking {
 			case 2:
 			{
 				
-				Collections.sort(students, new PrincipalRankingCriteria());
+				Collections.sort(students, rr.getRank("Principal"));
 				System.out.println(headers[0]+","+headers[1]+","+headers[2]+","+headers[3]);
 				for(Student stud : students) {
 		            System.out.println(stud);
@@ -55,7 +55,7 @@ public class StudentRanking {
 			}
 			case 3:
 			{
-				Collections.sort(students, new MusicTeacherRanking());
+				Collections.sort(students, rr.getRank("MusicTeacher"));
 				System.out.println(headers[0]+","+headers[1]+","+headers[2]+","+headers[3]);
 				for(Student stud : students) {
 		            System.out.println(stud);
